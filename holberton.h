@@ -1,36 +1,22 @@
-#ifndef HOLBERTON_H_
-#define HOLBERTON_H_
-
-#include <stdlib.h>
-#include <stdarg.h>
-#include <unistd.h>
-
+#include "holberton.h"
 /**
- * struct convert - Entry point
+ * init_params - clears struct fields and reset buf
+ * @params: the parameters struct
+ * @ap: the argument pointer
  *
- * Description: Defines a structure for symbols and functions
- *
- * @sym: The operator
- * @f: The function associated
+ * Return: void
  */
-
-struct convert
+void init_params(params_t *params, va_list ap)
 {
-
-	char *sym;
-	int (*f)(va_list);
-
-};
-typedef struct convert con_vert;
-
-
-int _putchar(char);
-int parser(const char *format, con_vert f_list[], va_list arg_list);
-int _printf(const char *format, ...);
-int print_char(va_list);
-int print_string(va_list);
-int print_percent(va_list);
-int print_integer(va_list);
-int print_number(va_list);
-
-#endif /*HOLBERTON_H_*/
+params->unsign = 0;
+params->plus_flag = 0;
+params->space_flag = 0;
+params->hashtag_flag = 0;
+params->zero_flag = 0;
+params->minus_flag = 0;
+params->width = 0;
+params->precision = UINT_MAX;
+params->h_modifier = 0;
+params->l_modifier = 0;
+(void)ap;
+}
